@@ -4,8 +4,14 @@ Calculates your potential climbing grade based on the 9c test metrics.
 
 ## Usage
 
+**Basic (4 metrics):**
 ```bash
 python 9c.py data/07_04_25.yaml
+```
+
+**Extended (6 metrics, includes no-hang & one-arm pull):**
+```bash
+python kyles_9c.py data/07_04_25.yaml
 ```
 
 ## Data Format
