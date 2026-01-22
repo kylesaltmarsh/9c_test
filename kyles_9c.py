@@ -146,8 +146,14 @@ class Test9C:
         self.test_scores['max_finger_strength'] = 100*(1 + self.test_yaml['max_finger_strength']/self.test_yaml['weight'])
         self.test_scores['max_finger_strength_score'] = self.max_finger_and_pull_strength_mapping[str(int(floor(self.test_scores['max_finger_strength'] * (10 ** -1)) / (10 ** -1)))]
 
+        self.test_scores['max_no_hang'] = 100*(self.test_yaml['max_no_hang']/self.test_yaml['weight'])
+        self.test_scores['max_no_hang_score'] = self.max_finger_and_pull_strength_mapping[str(int(floor(self.test_scores['max_no_hang'] * (10 ** -1)) / (10 ** -1)))]
+
         self.test_scores['max_pull_up'] = 100*(1 + self.test_yaml['max_pull_up']/self.test_yaml['weight'])
         self.test_scores['max_pull_up_score'] = self.max_finger_and_pull_strength_mapping[str(int(floor(self.test_scores['max_pull_up'] * (10 ** -1)) / (10 ** -1)))]
+
+        self.test_scores['max_oap'] = 100*(self.test_yaml['max_oap']/self.test_yaml['weight'])
+        self.test_scores['max_oap_score'] = self.max_finger_and_pull_strength_mapping[str(int(floor(self.test_scores['max_oap'] * (10 ** -1)) / (10 ** -1)))]
 
         self.test_scores['max_bar_hang'] = self.test_yaml['max_bar_hang']
         self.test_scores['max_bar_hang_score'] = self.max_bar_hang_mapping[str(int(30 * floor(self.test_scores['max_bar_hang'] / 30)))]
@@ -160,7 +166,7 @@ class Test9C:
         self.test_scores['total_score_aus'] = self.aus_grade_mapping[self.test_scores['total_score']]
 
     def save_test_scores(self, file):
-        with open('results/'+file, 'w') as outfile:
+        with open('results/results_'+file, 'w') as outfile:
             yaml.dump(self.test_scores, outfile, default_flow_style=False)
 
     def print_test_scores(self):
@@ -169,7 +175,7 @@ class Test9C:
 
 
 if __name__ == "__main__":
-    file = '14_12_22.yaml'
+    file = '07_04_25.yaml'
     test9c = Test9C('data/'+file)
     test9c.load_test_yaml()
     test9c.calculate_test_scores()
